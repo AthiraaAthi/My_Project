@@ -1,7 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:my_project/home_screen/home_screen.dart';
+import 'package:lottie/lottie.dart';
+
+import '../home_screen/home_screen.dart';
 
 class MySplashScreen extends StatefulWidget {
   const MySplashScreen({super.key});
@@ -13,9 +15,9 @@ class MySplashScreen extends StatefulWidget {
 class _MySplashScreenState extends State<MySplashScreen> {
   @override
   void initState() {
-    Timer(const Duration(seconds: 2), () {
+    Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+          context, MaterialPageRoute(builder: (context) => HomeScreen()));
     });
     // TODO: implement initState
     super.initState();
@@ -23,14 +25,11 @@ class _MySplashScreenState extends State<MySplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Color.fromARGB(255, 72, 184, 236),
+    return Scaffold(
       body: Center(
-        child: Text(
-          "Splash Screen",
-          style: TextStyle(
-              color: Colors.black, fontSize: 30, fontWeight: FontWeight.bold),
-        ),
+        child:
+            //Text("Splash"),
+            Lottie.asset("assets/images/Animation - 1702548466018.json"),
       ),
     );
   }

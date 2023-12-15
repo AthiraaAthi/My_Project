@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/view/requests_page/requests.dart';
+
+import 'home_screen_widget.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,20 +40,108 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "Alice",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(
                   height: 30,
                 ),
+                // Divider(
+                //   thickness: 1,
+                //   color: Colors.grey,
+                // ),
                 InkWell(
                   child: ListTile(
                     selectedColor: Colors.black,
-                    leading: Icon(Icons.person),
-                    title: Text("Profile"),
+                    leading: Icon(
+                      Icons.person,
+                      size: 35,
+                    ),
+                    title: Text(
+                      "Profile",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    trailing: InkWell(
+                      onTap: () {
+                        showModalBottomSheet(
+                            context: context,
+                            builder: (context) => Container(
+                                  height: 200,
+                                  child: ExpansionTile(
+                                    title: Text("Your Profile Information"),
+                                    children: [
+                                      Text(
+                                        "Name:Alice",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      Text(
+                                        "Mobile:123456789",
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                      SizedBox(
+                                        height: 20,
+                                      ),
+                                      OutlinedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: Text("OK"))
+                                    ],
+                                  ),
+                                ));
+                      },
+                      child: Icon(
+                        Icons.arrow_drop_down,
+                        size: 35,
+                      ),
+                    ),
                   ),
-                  onTap: () {
-                    ExpansionTile(
-                      title: Text("About Your Profile"),
-                    );
-                  },
-                )
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                HomeScreenWidget(
+                    correstitle: "About",
+                    corresicon: Icon(
+                      Icons.info_outline,
+                      size: 35,
+                    )),
+                SizedBox(
+                  height: 10,
+                ),
+                HomeScreenWidget(
+                  correstitle: "Settings",
+                  corresicon: Icon(
+                    Icons.settings,
+                    size: 35,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                HomeScreenWidget(
+                  correstitle: "Requests",
+                  corresicon: Icon(Icons.insert_chart_outlined),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                HomeScreenWidget(
+                  correstitle: "Share",
+                  corresicon: Icon(Icons.share),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
               ],
             ),
           ),
