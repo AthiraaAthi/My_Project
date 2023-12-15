@@ -65,51 +65,52 @@ class HomeScreen extends StatelessWidget {
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
-                    trailing: InkWell(
-                      onTap: () {
-                        showModalBottomSheet(
-                            context: context,
-                            builder: (context) => Container(
-                                  height: 200,
-                                  child: ExpansionTile(
-                                    title: Text("Your Profile Information"),
-                                    children: [
-                                      Text(
-                                        "Name:Alice",
-                                        style: TextStyle(
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                      SizedBox(
-                                        height: 15,
-                                      ),
-                                      Text(
-                                        "Mobile:123456789",
-                                        style: TextStyle(fontSize: 20),
-                                      ),
-                                      SizedBox(
-                                        height: 20,
-                                      ),
-                                      OutlinedButton(
-                                          onPressed: () {
-                                            Navigator.pop(context);
-                                          },
-                                          child: Text("OK"))
-                                    ],
-                                  ),
-                                ));
-                      },
-                      child: Icon(
-                        Icons.arrow_drop_down,
-                        size: 35,
-                      ),
-                    ),
+                    // trailing: InkWell(
+                    //   onTap: () {
+                    //     showModalBottomSheet(
+                    //         context: context,
+                    //         builder: (context) => Container(
+                    //               height: 200,
+                    //               child: ExpansionTile(
+                    //                 title: Text("Your Profile Information"),
+                    //                 children: [
+                    //                   Text(
+                    //                     "Name:Alice",
+                    //                     style: TextStyle(
+                    //                         fontSize: 20,
+                    //                         fontWeight: FontWeight.bold),
+                    //                   ),
+                    //                   SizedBox(
+                    //                     height: 15,
+                    //                   ),
+                    //                   Text(
+                    //                     "Mobile:123456789",
+                    //                     style: TextStyle(fontSize: 20),
+                    //                   ),
+                    //                   SizedBox(
+                    //                     height: 20,
+                    //                   ),
+                    //                   OutlinedButton(
+                    //                       onPressed: () {
+                    //                         Navigator.pop(context);
+                    //                       },
+                    //                       child: Text("OK"))
+                    //                 ],
+                    //               ),
+                    //             ));
+                    //   },
+                    //   child: Icon(
+                    //     Icons.arrow_drop_down,
+                    //     size: 35,
+                    //   ),
+                    // ),
                   ),
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 HomeScreenWidget(
+                    ontap: () {},
                     correstitle: "About",
                     corresicon: Icon(
                       Icons.info_outline,
@@ -119,6 +120,7 @@ class HomeScreen extends StatelessWidget {
                   height: 10,
                 ),
                 HomeScreenWidget(
+                  ontap: () {},
                   correstitle: "Settings",
                   corresicon: Icon(
                     Icons.settings,
@@ -129,6 +131,7 @@ class HomeScreen extends StatelessWidget {
                   height: 10,
                 ),
                 HomeScreenWidget(
+                  ontap: () {},
                   correstitle: "Requests",
                   corresicon: Icon(Icons.insert_chart_outlined),
                 ),
@@ -136,12 +139,14 @@ class HomeScreen extends StatelessWidget {
                   height: 10,
                 ),
                 HomeScreenWidget(
+                  ontap: () {},
                   correstitle: "Share",
                   corresicon: Icon(Icons.share),
                 ),
                 SizedBox(
                   height: 10,
                 ),
+                Image.asset("assets/images/tree.jpeg")
               ],
             ),
           ),
@@ -186,6 +191,61 @@ class HomeScreen extends StatelessWidget {
                 Column(
                   children: [
                     InkWell(
+                      onTap: () {
+                        showModalBottomSheet(
+                          context: context,
+                          builder: (context) => Padding(
+                            padding: const EdgeInsets.all(25),
+                            child: Container(
+                              child: Column(
+                                children: [
+                                  TextField(
+                                    decoration: InputDecoration(
+                                        hintText: "Your Name",
+                                        border: OutlineInputBorder(
+                                            borderSide: BorderSide(),
+                                            borderRadius:
+                                                BorderRadius.circular(10))),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  TextField(
+                                    decoration: InputDecoration(
+                                        hintText: "Phone no",
+                                        border: OutlineInputBorder(
+                                            borderSide: BorderSide(),
+                                            borderRadius:
+                                                BorderRadius.circular(10))),
+                                  ),
+                                  TextField(
+                                    decoration: InputDecoration(
+                                        hintText: "Your Address",
+                                        border: OutlineInputBorder(
+                                            borderSide: BorderSide(),
+                                            borderRadius:
+                                                BorderRadius.circular(10))),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  TextField(
+                                    decoration: InputDecoration(
+                                        hintText: "Quantity of Waste",
+                                        border: OutlineInputBorder(
+                                            borderSide: BorderSide(),
+                                            borderRadius:
+                                                BorderRadius.circular(10))),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
                       child: Container(
                         height: 150,
                         width: 150,

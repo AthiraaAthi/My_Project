@@ -27,9 +27,8 @@ class _MySplashScreenState extends State<MySplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child:
-            //Text("Splash"),
-            Lottie.asset("assets/images/Animation - 1702548466018.json"),
+        child: Text("Splash"),
+        // Lottie.asset("assets/images/Animation - 1702548466018.json"),
       ),
     );
   }
