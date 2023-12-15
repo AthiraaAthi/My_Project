@@ -5,6 +5,10 @@ import 'home_screen_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
+  TextEditingController NameController = TextEditingController();
+  TextEditingController PhoneController = TextEditingController();
+  TextEditingController AddressController = TextEditingController();
+  TextEditingController QuantityController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -164,6 +168,77 @@ class HomeScreen extends StatelessWidget {
                 Column(
                   children: [
                     InkWell(
+                      onTap: () {
+                        showModalBottomSheet(
+                          isScrollControlled: true,
+                          context: context,
+                          builder: (context) => Padding(
+                            padding: EdgeInsets.only(
+                                bottom:
+                                    MediaQuery.of(context).viewInsets.bottom),
+                            child: Container(
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    TextField(
+                                      controller: NameController,
+                                      decoration: InputDecoration(
+                                          hintText: "Your Name",
+                                          border: OutlineInputBorder(
+                                              borderSide: BorderSide(),
+                                              borderRadius:
+                                                  BorderRadius.circular(10))),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    TextField(
+                                      controller: PhoneController,
+                                      decoration: InputDecoration(
+                                          hintText: "Phone no",
+                                          border: OutlineInputBorder(
+                                              borderSide: BorderSide(),
+                                              borderRadius:
+                                                  BorderRadius.circular(10))),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    TextField(
+                                      controller: AddressController,
+                                      decoration: InputDecoration(
+                                          hintText: "Your Address",
+                                          border: OutlineInputBorder(
+                                              borderSide: BorderSide(),
+                                              borderRadius:
+                                                  BorderRadius.circular(10))),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    TextField(
+                                      controller: QuantityController,
+                                      decoration: InputDecoration(
+                                          hintText: "Quantity of Waste",
+                                          border: OutlineInputBorder(
+                                              borderSide: BorderSide(),
+                                              borderRadius:
+                                                  BorderRadius.circular(10))),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    ElevatedButton(
+                                        onPressed: () {}, child: Text("save"))
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
                       child: Container(
                         height: 150,
                         width: 150,
@@ -193,54 +268,70 @@ class HomeScreen extends StatelessWidget {
                     InkWell(
                       onTap: () {
                         showModalBottomSheet(
+                          isScrollControlled: true,
                           context: context,
                           builder: (context) => Padding(
-                            padding: const EdgeInsets.all(25),
+                            padding: EdgeInsets.only(
+                                bottom:
+                                    MediaQuery.of(context).viewInsets.bottom),
                             child: Container(
-                              child: Column(
-                                children: [
-                                  TextField(
-                                    decoration: InputDecoration(
-                                        hintText: "Your Name",
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide(),
-                                            borderRadius:
-                                                BorderRadius.circular(10))),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  TextField(
-                                    decoration: InputDecoration(
-                                        hintText: "Phone no",
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide(),
-                                            borderRadius:
-                                                BorderRadius.circular(10))),
-                                  ),
-                                  TextField(
-                                    decoration: InputDecoration(
-                                        hintText: "Your Address",
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide(),
-                                            borderRadius:
-                                                BorderRadius.circular(10))),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                  TextField(
-                                    decoration: InputDecoration(
-                                        hintText: "Quantity of Waste",
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide(),
-                                            borderRadius:
-                                                BorderRadius.circular(10))),
-                                  ),
-                                  SizedBox(
-                                    height: 10,
-                                  ),
-                                ],
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    TextField(
+                                      controller: NameController,
+                                      decoration: InputDecoration(
+                                          hintText: "Your Name",
+                                          border: OutlineInputBorder(
+                                              borderSide: BorderSide(),
+                                              borderRadius:
+                                                  BorderRadius.circular(10))),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    TextField(
+                                      controller: PhoneController,
+                                      decoration: InputDecoration(
+                                          hintText: "Phone no",
+                                          border: OutlineInputBorder(
+                                              borderSide: BorderSide(),
+                                              borderRadius:
+                                                  BorderRadius.circular(10))),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    TextField(
+                                      controller: AddressController,
+                                      decoration: InputDecoration(
+                                          hintText: "Your Address",
+                                          border: OutlineInputBorder(
+                                              borderSide: BorderSide(),
+                                              borderRadius:
+                                                  BorderRadius.circular(10))),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    TextField(
+                                      controller: QuantityController,
+                                      decoration: InputDecoration(
+                                          hintText: "Quantity of Waste",
+                                          border: OutlineInputBorder(
+                                              borderSide: BorderSide(),
+                                              borderRadius:
+                                                  BorderRadius.circular(10))),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    ElevatedButton(
+                                        onPressed: () {}, child: Text("save"))
+                                  ],
+                                ),
                               ),
                             ),
                           ),
@@ -269,31 +360,6 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          // const SizedBox(
-          //   height: 10,
-          // ),
-          // const Padding(
-          //   padding: EdgeInsets.all(8.0),
-          //   child: Row(
-          //     mainAxisAlignment: MainAxisAlignment.start,
-          //     children: [
-          //       SizedBox(
-          //         width: 60,
-          //       ),
-          //        Text(
-          //          "Plastic",
-          //          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          //        ),
-          //        SizedBox(
-          //          width: 130,
-          //        ),
-          //        Text(
-          //          "E-Waste",
-          //          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          //        ),
-          //     ],
-          //   ),
-          // ),
         ],
       ),
     );
