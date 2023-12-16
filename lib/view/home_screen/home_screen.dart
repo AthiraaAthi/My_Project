@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       drawer: Drawer(
-        backgroundColor: Color.fromARGB(255, 37, 141, 55),
+        //backgroundColor: Color.fromARGB(255, 37, 141, 55),
         child: Padding(
           padding: const EdgeInsets.all(15),
           child: Container(
@@ -114,12 +114,11 @@ class HomeScreen extends StatelessWidget {
                   height: 10,
                 ),
                 HomeScreenWidget(
-                    ontap: () {},
-                    correstitle: "About",
-                    corresicon: Icon(
-                      Icons.info_outline,
-                      size: 35,
-                    )),
+                  ontap: () {},
+                  correstitle: "Requests",
+                  corresicon: Icon(Icons.insert_chart_outlined),
+                ),
+
                 SizedBox(
                   height: 10,
                 ),
@@ -131,14 +130,17 @@ class HomeScreen extends StatelessWidget {
                     size: 35,
                   ),
                 ),
+
                 SizedBox(
                   height: 10,
                 ),
                 HomeScreenWidget(
-                  ontap: () {},
-                  correstitle: "Requests",
-                  corresicon: Icon(Icons.insert_chart_outlined),
-                ),
+                    ontap: () {},
+                    correstitle: "About",
+                    corresicon: Icon(
+                      Icons.info_outline,
+                      size: 35,
+                    )),
                 SizedBox(
                   height: 10,
                 ),
@@ -177,6 +179,7 @@ class HomeScreen extends StatelessWidget {
                                 bottom:
                                     MediaQuery.of(context).viewInsets.bottom),
                             child: Container(
+                              height: 600,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
@@ -231,7 +234,11 @@ class HomeScreen extends StatelessWidget {
                                       height: 10,
                                     ),
                                     ElevatedButton(
-                                        onPressed: () {}, child: Text("save"))
+                                        onPressed: () {}, child: Text("save")),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Image.asset("assets/images/tree.jpeg")
                                   ],
                                 ),
                               ),
@@ -275,6 +282,7 @@ class HomeScreen extends StatelessWidget {
                                 bottom:
                                     MediaQuery.of(context).viewInsets.bottom),
                             child: Container(
+                              height: 600,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
@@ -329,7 +337,11 @@ class HomeScreen extends StatelessWidget {
                                       height: 10,
                                     ),
                                     ElevatedButton(
-                                        onPressed: () {}, child: Text("save"))
+                                        onPressed: () {}, child: Text("save")),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Image.asset("assets/images/tree.jpeg")
                                   ],
                                 ),
                               ),
