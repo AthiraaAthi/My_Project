@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/utils/color_constant/color_constant.dart';
+import 'package:my_project/view/about_screen/about_screen.dart';
+import 'package:my_project/view/profile_screen/profile_screen.dart';
 import 'package:my_project/view/requests_page/requests.dart';
+import 'package:my_project/view/settings_screen/settings_screen.dart';
 
 import 'home_screen_widget.dart';
 
@@ -15,14 +19,13 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 37, 141, 55),
-        title: const Text(
+        backgroundColor: ColorConstant.MainGreen,
+        title: Text(
           "WF Pludge",
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ),
       drawer: Drawer(
-        //backgroundColor: Color.fromARGB(255, 37, 141, 55),
         child: Padding(
           padding: const EdgeInsets.all(15),
           child: Container(
@@ -53,11 +56,14 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(
                   height: 30,
                 ),
-                // Divider(
-                //   thickness: 1,
-                //   color: Colors.grey,
-                // ),
                 InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ProfileScreen(),
+                        ));
+                  },
                   child: ListTile(
                     selectedColor: Colors.black,
                     leading: Icon(
@@ -114,28 +120,44 @@ class HomeScreen extends StatelessWidget {
                   height: 10,
                 ),
                 HomeScreenWidget(
-                  ontap: () {},
+                  ontap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RequestsScreen(),
+                        ));
+                  },
                   correstitle: "Requests",
                   corresicon: Icon(Icons.insert_chart_outlined),
                 ),
-
                 SizedBox(
                   height: 10,
                 ),
                 HomeScreenWidget(
-                  ontap: () {},
+                  ontap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SettingsScreen(),
+                        ));
+                  },
                   correstitle: "Settings",
                   corresicon: Icon(
                     Icons.settings,
                     size: 35,
                   ),
                 ),
-
                 SizedBox(
                   height: 10,
                 ),
                 HomeScreenWidget(
-                    ontap: () {},
+                    ontap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AboutScreen(),
+                          ));
+                    },
                     correstitle: "About",
                     corresicon: Icon(
                       Icons.info_outline,
