@@ -11,7 +11,7 @@ class SettingsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: ColorConstant.MainGreen,
         title: Text(
-          "WF Pludge",
+          "Settings",
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ),

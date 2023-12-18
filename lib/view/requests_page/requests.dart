@@ -11,7 +11,7 @@ class RequestsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: ColorConstant.MainGreen,
         title: Text(
-          "WF Pludge",
+          "My Requests",
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ),

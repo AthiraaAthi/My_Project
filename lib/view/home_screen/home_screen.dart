@@ -35,10 +35,10 @@ class HomeScreen extends StatelessWidget {
               children: [
                 Container(
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: EdgeInsets.all(8.0),
                     child: CircleAvatar(
                       radius: 45,
-                      backgroundColor: Color.fromARGB(255, 161, 158, 158),
+                      backgroundColor: Color.fromARGB(244, 208, 206, 206),
                       child: Icon(
                         Icons.person,
                         size: 40,
@@ -75,45 +75,6 @@ class HomeScreen extends StatelessWidget {
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
-                    // trailing: InkWell(
-                    //   onTap: () {
-                    //     showModalBottomSheet(
-                    //         context: context,
-                    //         builder: (context) => Container(
-                    //               height: 200,
-                    //               child: ExpansionTile(
-                    //                 title: Text("Your Profile Information"),
-                    //                 children: [
-                    //                   Text(
-                    //                     "Name:Alice",
-                    //                     style: TextStyle(
-                    //                         fontSize: 20,
-                    //                         fontWeight: FontWeight.bold),
-                    //                   ),
-                    //                   SizedBox(
-                    //                     height: 15,
-                    //                   ),
-                    //                   Text(
-                    //                     "Mobile:123456789",
-                    //                     style: TextStyle(fontSize: 20),
-                    //                   ),
-                    //                   SizedBox(
-                    //                     height: 20,
-                    //                   ),
-                    //                   OutlinedButton(
-                    //                       onPressed: () {
-                    //                         Navigator.pop(context);
-                    //                       },
-                    //                       child: Text("OK"))
-                    //                 ],
-                    //               ),
-                    //             ));
-                    //   },
-                    //   child: Icon(
-                    //     Icons.arrow_drop_down,
-                    //     size: 35,
-                    //   ),
-                    // ),
                   ),
                 ),
                 SizedBox(
@@ -172,9 +133,12 @@ class HomeScreen extends StatelessWidget {
                   corresicon: Icon(Icons.share),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 60,
                 ),
-                Image.asset("assets/images/tree.jpeg")
+                Image.asset(
+                  "assets/images/tree.jpeg",
+                  fit: BoxFit.fitWidth,
+                )
               ],
             ),
           ),

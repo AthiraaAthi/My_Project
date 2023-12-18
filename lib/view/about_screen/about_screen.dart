@@ -11,7 +11,7 @@ class AboutScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: ColorConstant.MainGreen,
         title: Text(
-          "WF Pludge",
+          "About",
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ),

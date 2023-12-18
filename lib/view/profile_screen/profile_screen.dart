@@ -11,7 +11,7 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: ColorConstant.MainGreen,
         title: Text(
-          "WF Pludge",
+          "My Profile",
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ),
