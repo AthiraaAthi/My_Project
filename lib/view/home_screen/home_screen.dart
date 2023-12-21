@@ -146,9 +146,17 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
+        // mainAxisAlignment: MainAxisAlignment.center,
+        // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          Image.asset(
+            ImageConstant.Cleaning,
+            fit: BoxFit.fill,
+          ),
+          SizedBox(
+            height: 150,
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(
@@ -361,6 +369,14 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(
+            height: 110,
+          ),
+          // Image.asset(
+          //   ImageConstant.greenEarth,
+          //   fit: BoxFit.fill,
+          // ),
+          Image.asset(ImageConstant.Nature)
         ],
       ),
     );
