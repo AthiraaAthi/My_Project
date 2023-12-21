@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:my_project/utils/image_constant/image_constant.dart';
 
 import '../home_screen/home_screen.dart';
 
@@ -27,9 +28,13 @@ class _MySplashScreenState extends State<MySplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Text("Splash"),
-        // Lottie.asset("assets/images/Animation - 1702548466018.json"),
-      ),
+          child: Image.asset(
+        ImageConstant.Collecting,
+        fit: BoxFit.fill,
+      )
+          //Text("Splash"),
+          //Lottie.asset("assets/images/Animation - 1702548466018.json"),
+          ),
     );
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_project/utils/color_constant/color_constant.dart';
+import 'package:my_project/utils/image_constant/image_constant.dart';
 import 'package:my_project/view/about_screen/about_screen.dart';
 import 'package:my_project/view/profile_screen/profile_screen.dart';
 import 'package:my_project/view/requests_page/requests.dart';
@@ -21,7 +22,7 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: ColorConstant.MainGreen,
         title: Text(
-          "WF Pludge",
+          "WF Nature",
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ),
@@ -136,8 +137,8 @@ class HomeScreen extends StatelessWidget {
                   height: 60,
                 ),
                 Image.asset(
-                  "assets/images/tree.jpeg",
-                  fit: BoxFit.fitWidth,
+                  ImageConstant.Collecting,
+                  fit: BoxFit.fill,
                 )
               ],
             ),
@@ -224,7 +225,7 @@ class HomeScreen extends StatelessWidget {
                                     SizedBox(
                                       height: 20,
                                     ),
-                                    Image.asset("assets/images/tree.jpeg")
+                                    Image.asset(ImageConstant.Collecting)
                                   ],
                                 ),
                               ),
@@ -235,12 +236,11 @@ class HomeScreen extends StatelessWidget {
                       child: Container(
                         height: 150,
                         width: 150,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                             color: Colors.grey,
                             image: DecorationImage(
-                              image:
-                                  AssetImage("assets/images/green_basket.png"),
-                              fit: BoxFit.fill,
+                              image: AssetImage(ImageConstant.plastic),
+                              fit: BoxFit.cover,
                             ),
                             borderRadius:
                                 BorderRadius.all(Radius.circular(10))),
@@ -327,7 +327,10 @@ class HomeScreen extends StatelessWidget {
                                     SizedBox(
                                       height: 20,
                                     ),
-                                    Image.asset("assets/images/tree.jpeg")
+                                    Image.asset(
+                                      ImageConstant.Collecting,
+                                      fit: BoxFit.fill,
+                                    )
                                   ],
                                 ),
                               ),
@@ -338,10 +341,10 @@ class HomeScreen extends StatelessWidget {
                       child: Container(
                         height: 150,
                         width: 150,
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                             color: Colors.grey,
                             image: DecorationImage(
-                              image: AssetImage("assets/images/e-waste_.png"),
+                              image: AssetImage(ImageConstant.eWaste),
                               fit: BoxFit.fill,
                             ),
                             borderRadius:
