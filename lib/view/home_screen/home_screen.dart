@@ -14,6 +14,7 @@ class HomeScreen extends StatelessWidget {
   TextEditingController PhoneController = TextEditingController();
   TextEditingController AddressController = TextEditingController();
   TextEditingController QuantityController = TextEditingController();
+  TextEditingController DateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -228,6 +229,18 @@ class HomeScreen extends StatelessWidget {
                                     SizedBox(
                                       height: 10,
                                     ),
+                                    TextField(
+                                      controller: DateController,
+                                      decoration: InputDecoration(
+                                          hintText: "Date of Request",
+                                          border: OutlineInputBorder(
+                                              borderSide: BorderSide(),
+                                              borderRadius:
+                                                  BorderRadius.circular(10))),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
                                     ElevatedButton(
                                         onPressed: () {}, child: Text("save")),
                                     SizedBox(
@@ -330,8 +343,21 @@ class HomeScreen extends StatelessWidget {
                                     SizedBox(
                                       height: 10,
                                     ),
+                                    TextField(
+                                      controller: DateController,
+                                      decoration: InputDecoration(
+                                          hintText: "Date of Request",
+                                          border: OutlineInputBorder(
+                                              borderSide: BorderSide(),
+                                              borderRadius:
+                                                  BorderRadius.circular(10))),
+                                    ),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
                                     ElevatedButton(
-                                        onPressed: () {}, child: Text("save")),
+                                        onPressed: () async {},
+                                        child: Text("save")),
                                     SizedBox(
                                       height: 20,
                                     ),
