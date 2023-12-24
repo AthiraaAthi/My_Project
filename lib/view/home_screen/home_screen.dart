@@ -1,4 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:my_project/controller/my_controller/my_controller.dart';
 import 'package:my_project/utils/color_constant/color_constant.dart';
 import 'package:my_project/utils/image_constant/image_constant.dart';
 import 'package:my_project/view/about_screen/about_screen.dart';
@@ -15,9 +17,12 @@ class HomeScreen extends StatelessWidget {
   TextEditingController AddressController = TextEditingController();
   TextEditingController QuantityController = TextEditingController();
   TextEditingController DateController = TextEditingController();
+  CollectionReference employeeCollection =
+      FirebaseFirestore.instance.collection("Users");
 
   @override
   Widget build(BuildContext context) {
+    MyController MyControllerobj = MyController();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -242,7 +247,28 @@ class HomeScreen extends StatelessWidget {
                                       height: 10,
                                     ),
                                     ElevatedButton(
-                                        onPressed: () {}, child: Text("save")),
+                                        onPressed: () {
+                                          MyControllerobj.addData(
+                                            UserName: NameController.text,
+                                            UserPhone: PhoneController.text,
+                                            UserAddress: AddressController.text,
+                                            WasteQuantity:
+                                                QuantityController.text,
+                                            RequestDate: DateController.text,
+                                          );
+                                          NameController.clear();
+                                          PhoneController.clear();
+                                          AddressController.clear();
+                                          QuantityController.clear();
+                                          DateController.clear();
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    RequestsScreen(),
+                                              ));
+                                        },
+                                        child: Text("save")),
                                     SizedBox(
                                       height: 20,
                                     ),
