@@ -17,6 +17,7 @@ class HomeScreen extends StatelessWidget {
   TextEditingController AddressController = TextEditingController();
   TextEditingController QuantityController = TextEditingController();
   TextEditingController DateController = TextEditingController();
+
   CollectionReference employeeCollection =
       FirebaseFirestore.instance.collection("Users");
 
@@ -382,7 +383,27 @@ class HomeScreen extends StatelessWidget {
                                       height: 10,
                                     ),
                                     ElevatedButton(
-                                        onPressed: () async {},
+                                        onPressed: () async {
+                                          MyControllerobj.addData(
+                                            UserName: NameController.text,
+                                            UserPhone: PhoneController.text,
+                                            UserAddress: AddressController.text,
+                                            WasteQuantity:
+                                                QuantityController.text,
+                                            RequestDate: DateController.text,
+                                          );
+                                          NameController.clear();
+                                          PhoneController.clear();
+                                          AddressController.clear();
+                                          QuantityController.clear();
+                                          DateController.clear();
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    RequestsScreen(),
+                                              ));
+                                        },
                                         child: Text("save")),
                                     SizedBox(
                                       height: 20,
