@@ -6,7 +6,7 @@ import 'package:my_project/utils/image_constant/image_constant.dart';
 import 'package:my_project/view/about_screen/about_screen.dart';
 import 'package:my_project/view/profile_screen/profile_screen.dart';
 import 'package:my_project/view/requests_page/requests.dart';
-import 'package:my_project/view/settings_screen/settings_screen.dart';
+import 'package:my_project/view/theme_screen/theme_screen.dart';
 
 import 'home_screen_widget.dart';
 
@@ -20,6 +20,14 @@ class HomeScreen extends StatelessWidget {
 
   CollectionReference employeeCollection =
       FirebaseFirestore.instance.collection("Users");
+  TextEditingController ENameController = TextEditingController();
+  TextEditingController EPhoneController = TextEditingController();
+  TextEditingController EAddressController = TextEditingController();
+  TextEditingController EQuantityController = TextEditingController();
+  TextEditingController EDateController = TextEditingController();
+
+  CollectionReference EUserCollection =
+      FirebaseFirestore.instance.collection("Euser");
 
   @override
   Widget build(BuildContext context) {
@@ -107,12 +115,12 @@ class HomeScreen extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => SettingsScreen(),
+                          builder: (context) => ThemeScreen(),
                         ));
                   },
-                  correstitle: "Settings",
+                  correstitle: "Theme",
                   corresicon: Icon(
-                    Icons.settings,
+                    Icons.light_mode,
                     size: 35,
                   ),
                 ),
@@ -323,7 +331,7 @@ class HomeScreen extends StatelessWidget {
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     TextField(
-                                      controller: NameController,
+                                      controller: ENameController,
                                       decoration: InputDecoration(
                                           hintText: "Your Name",
                                           border: OutlineInputBorder(
@@ -335,7 +343,7 @@ class HomeScreen extends StatelessWidget {
                                       height: 10,
                                     ),
                                     TextField(
-                                      controller: PhoneController,
+                                      controller: EPhoneController,
                                       decoration: InputDecoration(
                                           hintText: "Phone no",
                                           border: OutlineInputBorder(
@@ -347,7 +355,7 @@ class HomeScreen extends StatelessWidget {
                                       height: 10,
                                     ),
                                     TextField(
-                                      controller: AddressController,
+                                      controller: EAddressController,
                                       decoration: InputDecoration(
                                           hintText: "Your Address",
                                           border: OutlineInputBorder(
@@ -359,7 +367,7 @@ class HomeScreen extends StatelessWidget {
                                       height: 10,
                                     ),
                                     TextField(
-                                      controller: QuantityController,
+                                      controller: EQuantityController,
                                       decoration: InputDecoration(
                                           hintText: "Quantity of Waste",
                                           border: OutlineInputBorder(
@@ -371,7 +379,7 @@ class HomeScreen extends StatelessWidget {
                                       height: 10,
                                     ),
                                     TextField(
-                                      controller: DateController,
+                                      controller: EDateController,
                                       decoration: InputDecoration(
                                           hintText: "Date of Request",
                                           border: OutlineInputBorder(
@@ -384,19 +392,20 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                     ElevatedButton(
                                         onPressed: () async {
-                                          MyControllerobj.addData(
-                                            UserName: NameController.text,
-                                            UserPhone: PhoneController.text,
-                                            UserAddress: AddressController.text,
-                                            WasteQuantity:
-                                                QuantityController.text,
-                                            RequestDate: DateController.text,
+                                          MyControllerobj.addEData(
+                                            EUserName: ENameController.text,
+                                            EUserPhone: EPhoneController.text,
+                                            EUserAddress:
+                                                EAddressController.text,
+                                            EWasteQuantity:
+                                                EQuantityController.text,
+                                            ERequestDate: EDateController.text,
                                           );
-                                          NameController.clear();
-                                          PhoneController.clear();
-                                          AddressController.clear();
-                                          QuantityController.clear();
-                                          DateController.clear();
+                                          ENameController.clear();
+                                          EPhoneController.clear();
+                                          EAddressController.clear();
+                                          EQuantityController.clear();
+                                          EDateController.clear();
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(

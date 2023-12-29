@@ -4,8 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 
 class EwasteScreen extends StatelessWidget {
   EwasteScreen({super.key});
-  CollectionReference UserCollection =
-      FirebaseFirestore.instance.collection("Users");
+  // CollectionReference UserCollection =
+  //     FirebaseFirestore.instance.collection("Users");
+  CollectionReference EUserCollection =
+      FirebaseFirestore.instance.collection("Euser");
 
   @override
   Widget build(BuildContext context) {
@@ -13,13 +15,13 @@ class EwasteScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(15),
         child: StreamBuilder(
-            stream: UserCollection.snapshots(),
+            stream: EUserCollection.snapshots(),
             builder: (context, snapshot) {
               if (snapshot.hasData) {
                 return ListView.builder(
                   itemCount: snapshot.data!.docs.length,
                   itemBuilder: (context, index) {
-                    DocumentSnapshot Users = snapshot.data!.docs[index];
+                    DocumentSnapshot EUsers = snapshot.data!.docs[index];
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
@@ -36,7 +38,7 @@ class EwasteScreen extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "User : ${Users["Name"]}",
+                                "User : ${EUsers["Name"]}",
                                 style: GoogleFonts.acme(
                                     fontSize: 25, fontWeight: FontWeight.bold),
                                 //TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
@@ -45,7 +47,7 @@ class EwasteScreen extends StatelessWidget {
                                 height: 10,
                               ),
                               Text(
-                                "Contact No : ${Users["Phone"]}",
+                                "Contact No : ${EUsers["Phone"]}",
                                 style: TextStyle(
                                     fontSize: 15, fontWeight: FontWeight.w400),
                               ),
@@ -53,7 +55,7 @@ class EwasteScreen extends StatelessWidget {
                                 height: 10,
                               ),
                               Text(
-                                "Address : ${Users["Address"]}",
+                                "Address : ${EUsers["Address"]}",
                                 style: TextStyle(
                                     fontSize: 15, fontWeight: FontWeight.w400),
                               ),
@@ -61,7 +63,7 @@ class EwasteScreen extends StatelessWidget {
                                 height: 10,
                               ),
                               Text(
-                                "Quantity : ${Users["Quantity"]}",
+                                "Quantity : ${EUsers["Quantity"]}",
                                 style: TextStyle(
                                     fontSize: 15, fontWeight: FontWeight.w400),
                               ),
@@ -73,7 +75,7 @@ class EwasteScreen extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    "Date of Request : ${Users["Date"]}",
+                                    "Date of Request : ${EUsers["Date"]}",
                                     style: TextStyle(
                                         fontSize: 15,
                                         fontWeight: FontWeight.w500),

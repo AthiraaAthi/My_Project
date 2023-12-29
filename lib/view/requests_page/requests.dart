@@ -10,6 +10,8 @@ class RequestsScreen extends StatelessWidget {
   RequestsScreen({super.key});
   CollectionReference employeeCollection =
       FirebaseFirestore.instance.collection("Users");
+  CollectionReference EUserCollection =
+      FirebaseFirestore.instance.collection("Euser");
 
   @override
   Widget build(BuildContext context) {
