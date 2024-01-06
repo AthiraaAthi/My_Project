@@ -1,52 +1,59 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+
+import 'package:google_fonts/google_fonts.dart';
 import 'package:my_project/controller/my_controller/my_controller.dart';
 import 'package:my_project/utils/color_constant/color_constant.dart';
 import 'package:my_project/utils/image_constant/image_constant.dart';
 import 'package:my_project/view/about_screen/about_screen.dart';
-import 'package:my_project/view/profile_screen/profile_screen.dart';
+
 import 'package:my_project/view/requests_page/requests.dart';
-import 'package:my_project/view/theme_screen/theme_screen.dart';
+import 'package:share_plus/share_plus.dart';
 
 import 'home_screen_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
+  CollectionReference employeeCollection =
+      FirebaseFirestore.instance.collection("Users");
   TextEditingController NameController = TextEditingController();
   TextEditingController PhoneController = TextEditingController();
   TextEditingController AddressController = TextEditingController();
   TextEditingController QuantityController = TextEditingController();
   TextEditingController DateController = TextEditingController();
 
-  CollectionReference employeeCollection =
-      FirebaseFirestore.instance.collection("Users");
+  CollectionReference EUserCollection =
+      FirebaseFirestore.instance.collection("Euser");
   TextEditingController ENameController = TextEditingController();
   TextEditingController EPhoneController = TextEditingController();
   TextEditingController EAddressController = TextEditingController();
   TextEditingController EQuantityController = TextEditingController();
   TextEditingController EDateController = TextEditingController();
 
-  CollectionReference EUserCollection =
-      FirebaseFirestore.instance.collection("Euser");
+  CollectionReference ProfileCollection =
+      FirebaseFirestore.instance.collection("ProfileName");
+  TextEditingController ProfileNamecontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     MyController MyControllerobj = MyController();
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorConstant.White,
       appBar: AppBar(
         backgroundColor: ColorConstant.MainGreen,
-        title: Text(
-          "WF Nature",
-          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
-        ),
+        title: Text("Wastico",
+            style: GoogleFonts.abel(
+                fontWeight: FontWeight.bold, color: ColorConstant.White)
+            // TextStyle(
+            //     fontWeight: FontWeight.bold, color: ColorConstant.White),
+            ),
       ),
       drawer: Drawer(
         child: Padding(
           padding: const EdgeInsets.all(15),
           child: Container(
             height: 600,
-            color: Colors.white,
+            color: ColorConstant.White,
             child: Column(
               children: [
                 Container(
@@ -65,37 +72,72 @@ class HomeScreen extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                Text(
-                  "Alice",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Alice",
+
+                      //ProfileNamecontroller.text,
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                    IconButton(
+                        onPressed: () {
+                          showModalBottomSheet(
+                            isScrollControlled: true,
+                            context: context,
+                            builder: (context) => Padding(
+                              padding: EdgeInsets.only(
+                                  bottom:
+                                      MediaQuery.of(context).viewInsets.bottom),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    TextField(
+                                      controller: ProfileNamecontroller,
+                                      decoration: InputDecoration(
+                                          hintText: "Your Name",
+                                          border: OutlineInputBorder(
+                                              borderSide: BorderSide(),
+                                              borderRadius:
+                                                  BorderRadius.circular(10))),
+                                    ),
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        MyControllerobj.addProfile(
+                                            ProfileUserName:
+                                                ProfileNamecontroller.text);
+                                        ProfileNamecontroller.clear();
+                                        Navigator.pop(context);
+                                      },
+                                      child: Text("save"),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          );
+                          // showModalBottomSheet(context: context, builder: (context) => Column(
+                          //   children: [
+                          //     TextField(
+                          //       decoration: ,
+                          //     )
+                          //   ],
+                          // ),);
+                        },
+                        icon: Icon(Icons.edit))
+                  ],
                 ),
                 SizedBox(
                   height: 30,
                 ),
-                InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ProfileScreen(),
-                        ));
-                  },
-                  child: ListTile(
-                    selectedColor: Colors.black,
-                    leading: Icon(
-                      Icons.person,
-                      size: 35,
-                    ),
-                    title: Text(
-                      "Profile",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
+                //
                 HomeScreenWidget(
                   ontap: () {
                     Navigator.push(
@@ -108,25 +150,25 @@ class HomeScreen extends StatelessWidget {
                   corresicon: Icon(Icons.insert_chart_outlined),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
-                HomeScreenWidget(
-                  ontap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => ThemeScreen(),
-                        ));
-                  },
-                  correstitle: "Theme",
-                  corresicon: Icon(
-                    Icons.light_mode,
-                    size: 35,
-                  ),
-                ),
-                SizedBox(
-                  height: 10,
-                ),
+                // HomeScreenWidget(
+                //   ontap: () {
+                //     Navigator.push(
+                //         context,
+                //         MaterialPageRoute(
+                //           builder: (context) => ThemeScreen(),
+                //         ));
+                //   },
+                //   correstitle: "Theme",
+                //   corresicon: Icon(
+                //     Icons.light_mode,
+                //     size: 35,
+                //   ),
+                // ),
+                // SizedBox(
+                //   height: 10,
+                // ),
                 HomeScreenWidget(
                     ontap: () {
                       Navigator.push(
@@ -140,16 +182,139 @@ class HomeScreen extends StatelessWidget {
                       Icons.info_outline,
                       size: 35,
                     )),
+
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 HomeScreenWidget(
-                  ontap: () {},
-                  correstitle: "Share",
-                  corresicon: Icon(Icons.share),
+                  ontap: () {
+                    showDialog(
+                      context: context,
+                      builder: (context) => Container(
+                        height: 400,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            AlertDialog(
+                              backgroundColor: ColorConstant.White,
+                              title: Container(
+                                height: 400,
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "Rate Us",
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Icon(
+                                          Icons.star,
+                                          size: 40,
+                                          color: Colors.amber,
+                                        )
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Text(
+                                      "We are Working hard for a better user experience.",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(
+                                      height: 15,
+                                    ),
+                                    Text(
+                                      "We'd greatly appreciate if you can rate us.",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SizedBox(
+                                      height: 30,
+                                    ),
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Icon(
+                                          Icons.star_border,
+                                          size: 40,
+                                          color: Colors.grey,
+                                        ),
+                                        Icon(
+                                          Icons.star_border,
+                                          size: 40,
+                                          color: Colors.grey,
+                                        ),
+                                        Icon(
+                                          Icons.star_border,
+                                          size: 40,
+                                          color: Colors.grey,
+                                        ),
+                                        Icon(
+                                          Icons.star_border,
+                                          size: 40,
+                                          color: Colors.grey,
+                                        ),
+                                        Icon(
+                                          Icons.star_border,
+                                          size: 40,
+                                          color: Colors.grey,
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      height: 30,
+                                    ),
+                                    Container(
+                                      height: 50,
+                                      width: 500,
+                                      decoration: BoxDecoration(
+                                          color: Colors.amber,
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                      child: Center(
+                                        child: Text(
+                                          "Rate",
+                                          style: GoogleFonts.nunito(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold,
+                                              color: ColorConstant.White),
+                                        ),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                  correstitle: "Rate Us",
+                  corresicon: Icon(Icons.star, size: 35),
                 ),
                 SizedBox(
-                  height: 60,
+                  height: 20,
+                ),
+                HomeScreenWidget(
+                  ontap: () {
+                    Share.share("");
+                  },
+                  correstitle: "Share",
+                  corresicon: Icon(Icons.share, size: 35),
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 Image.asset(
                   ImageConstant.Collecting,
@@ -170,7 +335,7 @@ class HomeScreen extends StatelessWidget {
             fit: BoxFit.fill,
           ),
           SizedBox(
-            height: 150,
+            height: 100,
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -256,28 +421,29 @@ class HomeScreen extends StatelessWidget {
                                       height: 10,
                                     ),
                                     ElevatedButton(
-                                        onPressed: () {
-                                          MyControllerobj.addData(
-                                            UserName: NameController.text,
-                                            UserPhone: PhoneController.text,
-                                            UserAddress: AddressController.text,
-                                            WasteQuantity:
-                                                QuantityController.text,
-                                            RequestDate: DateController.text,
-                                          );
-                                          NameController.clear();
-                                          PhoneController.clear();
-                                          AddressController.clear();
-                                          QuantityController.clear();
-                                          DateController.clear();
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    RequestsScreen(),
-                                              ));
-                                        },
-                                        child: Text("save")),
+                                      onPressed: () {
+                                        MyControllerobj.addData(
+                                          UserName: NameController.text,
+                                          UserPhone: PhoneController.text,
+                                          UserAddress: AddressController.text,
+                                          WasteQuantity:
+                                              QuantityController.text,
+                                          RequestDate: DateController.text,
+                                        );
+                                        NameController.clear();
+                                        PhoneController.clear();
+                                        AddressController.clear();
+                                        QuantityController.clear();
+                                        DateController.clear();
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  RequestsScreen(),
+                                            ));
+                                      },
+                                      child: Text("save"),
+                                    ),
                                     SizedBox(
                                       height: 20,
                                     ),
@@ -452,12 +618,8 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 110,
+            height: 39,
           ),
-          // Image.asset(
-          //   ImageConstant.greenEarth,
-          //   fit: BoxFit.fill,
-          // ),
           Image.asset(ImageConstant.Nature)
         ],
       ),

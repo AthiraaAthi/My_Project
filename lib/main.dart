@@ -12,7 +12,7 @@ void main() async {
           messagingSenderId: "",
           projectId: "project-firebase-8fbd3",
           storageBucket: "project-firebase-8fbd3.appspot.com"));
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MySplashScreen(),
     );

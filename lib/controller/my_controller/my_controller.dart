@@ -34,5 +34,16 @@ class MyController {
       "Date": ERequestDate
     });
   }
+
+  CollectionReference ProfileCollection =
+      FirebaseFirestore.instance.collection("ProfileName");
+  Future addProfile({
+    required String ProfileUserName,
+  }) async {
+    EUserCollection.add({
+      "Name": ProfileUserName,
+    });
+  }
+
   //name,phone,address,quantity,date
 }
