@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:my_project/utils/image_constant/image_constant.dart';
-
-import '../home_screen/home_screen.dart';
+import 'package:my_project/view/nav_screen/nav_screen.dart';
 
 class MySplashScreen extends StatefulWidget {
   const MySplashScreen({super.key});
@@ -18,7 +17,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
   void initState() {
     Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => HomeScreen()));
+          context, MaterialPageRoute(builder: (context) => NavScreen()));
     });
     // TODO: implement initState
     super.initState();

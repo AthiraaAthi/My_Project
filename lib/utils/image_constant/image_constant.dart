@@ -7,4 +7,6 @@ class ImageConstant {
   static String Cleaning = "assets/images/cleaning.jpg";
   static String greenEarth = "assets/images/greeenEarth.jpg";
   static String Nature = "assets/images/nature.jpg";
+  static String Dos = "assets/images/sections.jpg";
+  static String Donts = "assets/images/wastes.jpg";
 }
