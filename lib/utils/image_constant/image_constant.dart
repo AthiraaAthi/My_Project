@@ -9,4 +9,9 @@ class ImageConstant {
   static String Nature = "assets/images/nature.jpg";
   static String Dos = "assets/images/sections.jpg";
   static String Donts = "assets/images/wastes.jpg";
+  static String Home = "assets/images/HomeScreen.png";
+  static String ontap = "assets/images/ontapScreen.png";
+  static String requests = "assets/images/requestsScreen.png";
+  static String Guide = "assets/images/GuideScreen.png";
+  static String Settings = "assets/images/SettingsScreen.png";
 }

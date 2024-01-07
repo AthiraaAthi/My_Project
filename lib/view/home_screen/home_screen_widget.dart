@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_project/utils/font_constsnt/font_constant.dart';
 
 class HomeScreenWidget extends StatelessWidget {
   HomeScreenWidget(
@@ -17,7 +18,7 @@ class HomeScreenWidget extends StatelessWidget {
       child: ListTile(
         title: Text(
           correstitle,
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: FontConstant.myMainFonts,
         ),
         leading: corresicon,
       ),

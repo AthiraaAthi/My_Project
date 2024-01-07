@@ -2,24 +2,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_project/utils/color_constant/color_constant.dart';
+import 'package:my_project/view/instructions_screen/instructions_screen.dart';
 import 'package:share_plus/share_plus.dart';
 
-import '../../controller/my_controller/my_controller.dart';
 import '../../utils/image_constant/image_constant.dart';
 import '../about_screen/about_screen.dart';
 import '../home_screen/home_screen_widget.dart';
-import '../requests_page/requests.dart';
-import '../theme_screen/theme_screen.dart';
 
 class SettingsScreen extends StatelessWidget {
   SettingsScreen({super.key});
-  CollectionReference ProfileCollection =
-      FirebaseFirestore.instance.collection("ProfileName");
-  TextEditingController ProfileNamecontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    MyController MyControllerobj = MyController();
     return Scaffold(
       appBar: AppBar(
         title: Text("Settings"),
@@ -28,7 +22,6 @@ class SettingsScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
               child: Padding(
@@ -50,89 +43,32 @@ class SettingsScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "user",
+                  "User",
 
                   //ProfileNamecontroller.text,
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                // SizedBox(
-                //   width: 5,
-                // ),
-                // IconButton(
-                //     onPressed: () {
-                //       showModalBottomSheet(
-                //         isScrollControlled: true,
-                //         context: context,
-                //         builder: (context) => Padding(
-                //           padding: EdgeInsets.only(
-                //               bottom: MediaQuery.of(context).viewInsets.bottom),
-                //           child: Padding(
-                //             padding: const EdgeInsets.all(8.0),
-                //             child: Column(
-                //               mainAxisSize: MainAxisSize.min,
-                //               children: [
-                //                 TextField(
-                //                   controller: ProfileNamecontroller,
-                //                   decoration: InputDecoration(
-                //                       hintText: "Your Name",
-                //                       border: OutlineInputBorder(
-                //                           borderSide: BorderSide(),
-                //                           borderRadius:
-                //                               BorderRadius.circular(10))),
-                //                 ),
-                //                 ElevatedButton(
-                //                   onPressed: () {
-                //                     MyControllerobj.addProfile(
-                //                         ProfileUserName:
-                //                             ProfileNamecontroller.text);
-                //                     ProfileNamecontroller.clear();
-                //                     Navigator.pop(context);
-                //                   },
-                //                   child: Text("save"),
-                //                 ),
-                //               ],
-                //             ),
-                //           ),
-                //         ),
-                //       );
-                //     },
-                //     icon: Icon(Icons.edit))
               ],
             ),
+
             SizedBox(
-              height: 20,
-            ),
-            //
-            HomeScreenWidget(
-              ontap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => RequestsScreen(),
-                    ));
-              },
-              correstitle: "Requests",
-              corresicon: Icon(Icons.insert_chart_outlined),
-            ),
-            SizedBox(
-              height: 20,
+              height: 30,
             ),
             HomeScreenWidget(
-              ontap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => ThemeScreen(),
-                    ));
-              },
-              correstitle: "Theme",
-              corresicon: Icon(
-                Icons.light_mode,
-                size: 35,
-              ),
-            ),
+                ontap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => InstructionScreen(),
+                      ));
+                },
+                correstitle: "User Guide",
+                corresicon: Icon(
+                  Icons.note_alt_sharp,
+                  size: 35,
+                )),
             SizedBox(
-              height: 10,
+              height: 20,
             ),
             HomeScreenWidget(
                 ontap: () {
@@ -274,13 +210,13 @@ class SettingsScreen extends StatelessWidget {
               correstitle: "Share",
               corresicon: Icon(Icons.share, size: 35),
             ),
-            // SizedBox(
-            //   height: 10,
-            // ),
-            Image.asset(
-              ImageConstant.Collecting,
-              fit: BoxFit.fill,
-            )
+            // // SizedBox(
+            // //   height: 10,
+            // // ),
+            // Image.asset(
+            //   ImageConstant.Collecting,
+            //   fit: BoxFit.fill,
+            // )
           ],
         ),
       ),
