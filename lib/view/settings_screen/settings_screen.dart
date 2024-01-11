@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:my_project/utils/color_constant/color_constant.dart';
 import 'package:my_project/view/instructions_screen/instructions_screen.dart';
+import 'package:my_project/view/response_screen/response_screen.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../utils/image_constant/image_constant.dart';
 import '../about_screen/about_screen.dart';
@@ -11,6 +13,7 @@ import '../home_screen/home_screen_widget.dart';
 
 class SettingsScreen extends StatelessWidget {
   SettingsScreen({super.key});
+  // Obtain shared preferences.
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +67,23 @@ class SettingsScreen extends StatelessWidget {
                 },
                 correstitle: "User Guide",
                 corresicon: Icon(
-                  Icons.note_alt_sharp,
+                  Icons.book_rounded,
+                  size: 35,
+                )),
+            SizedBox(
+              height: 20,
+            ),
+            HomeScreenWidget(
+                ontap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ResponseScreen(),
+                      ));
+                },
+                correstitle: "Responses",
+                corresicon: Icon(
+                  Icons.restore_page_rounded,
                   size: 35,
                 )),
             SizedBox(

@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_project/utils/color_constant/color_constant.dart';
 
 class EwasteScreen extends StatelessWidget {
   EwasteScreen({super.key});
@@ -29,7 +30,7 @@ class EwasteScreen extends StatelessWidget {
                         width: 300,
                         decoration: BoxDecoration(
                             color: Colors.white,
-                            border: Border.all(),
+                            border: Border.all(color: ColorConstant.MainGreen),
                             borderRadius: BorderRadius.circular(10)),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -48,7 +49,7 @@ class EwasteScreen extends StatelessWidget {
                               ),
                               Text(
                                 "Contact No : ${EUsers["Phone"]}",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     fontSize: 15, fontWeight: FontWeight.w400),
                               ),
                               SizedBox(
@@ -56,7 +57,7 @@ class EwasteScreen extends StatelessWidget {
                               ),
                               Text(
                                 "Address : ${EUsers["Address"]}",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     fontSize: 15, fontWeight: FontWeight.w400),
                               ),
                               SizedBox(
@@ -64,7 +65,7 @@ class EwasteScreen extends StatelessWidget {
                               ),
                               Text(
                                 "Quantity : ${EUsers["Quantity"]}",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     fontSize: 15, fontWeight: FontWeight.w400),
                               ),
                               SizedBox(
@@ -76,9 +77,9 @@ class EwasteScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     "Date of Request : ${EUsers["Date"]}",
-                                    style: TextStyle(
+                                    style: GoogleFonts.poppins(
                                         fontSize: 15,
-                                        fontWeight: FontWeight.w500),
+                                        fontWeight: FontWeight.w400),
                                   ),
                                 ],
                               ),

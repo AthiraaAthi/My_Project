@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:my_project/utils/image_constant/image_constant.dart';
 import 'package:my_project/view/nav_screen/nav_screen.dart';
+import 'package:my_project/view/register_screen/register_screen.dart';
 
 class MySplashScreen extends StatefulWidget {
   const MySplashScreen({super.key});

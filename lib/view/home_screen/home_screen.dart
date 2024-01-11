@@ -1,38 +1,55 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
+
 import 'package:my_project/controller/my_controller/my_controller.dart';
 import 'package:my_project/utils/color_constant/color_constant.dart';
 import 'package:my_project/utils/font_constsnt/font_constant.dart';
 import 'package:my_project/utils/image_constant/image_constant.dart';
-import 'package:my_project/view/about_screen/about_screen.dart';
+import 'package:my_project/view/requests_page/e-waste_screen.dart';
+import 'package:my_project/view/requests_page/plastics_screen.dart';
 
 import 'package:my_project/view/requests_page/requests.dart';
-import 'package:share_plus/share_plus.dart';
+import 'package:my_project/view/success_screen/success_screen.dart';
 
-import 'home_screen_widget.dart';
-
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   CollectionReference employeeCollection =
       FirebaseFirestore.instance.collection("Users");
+
   TextEditingController NameController = TextEditingController();
+
   TextEditingController PhoneController = TextEditingController();
+
   TextEditingController AddressController = TextEditingController();
+
   TextEditingController QuantityController = TextEditingController();
+
   TextEditingController DateController = TextEditingController();
 
   CollectionReference EUserCollection =
       FirebaseFirestore.instance.collection("Euser");
+
   TextEditingController ENameController = TextEditingController();
+
   TextEditingController EPhoneController = TextEditingController();
+
   TextEditingController EAddressController = TextEditingController();
+
   TextEditingController EQuantityController = TextEditingController();
+
   TextEditingController EDateController = TextEditingController();
 
   CollectionReference ProfileCollection =
       FirebaseFirestore.instance.collection("ProfileName");
+
   TextEditingController ProfileNamecontroller = TextEditingController();
 
   @override
@@ -139,31 +156,70 @@ class HomeScreen extends StatelessWidget {
                                     ),
                                     ElevatedButton(
                                       onPressed: () {
-                                        MyControllerobj.addData(
-                                          UserName: NameController.text,
-                                          UserPhone: PhoneController.text,
-                                          UserAddress: AddressController.text,
-                                          WasteQuantity:
-                                              QuantityController.text,
-                                          RequestDate: DateController.text,
-                                        );
-                                        NameController.clear();
-                                        PhoneController.clear();
-                                        AddressController.clear();
-                                        QuantityController.clear();
-                                        DateController.clear();
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) =>
-                                                  RequestsScreen(),
-                                            ));
+                                        if (NameController.text.isNotEmpty &&
+                                            PhoneController.text.isNotEmpty &&
+                                            AddressController.text.isNotEmpty &&
+                                            QuantityController
+                                                .text.isNotEmpty &&
+                                            DateController.text.isNotEmpty) {
+                                          MyControllerobj.addData(
+                                              UserName: NameController.text,
+                                              UserPhone: PhoneController.text,
+                                              UserAddress:
+                                                  AddressController.text,
+                                              WasteQuantity:
+                                                  QuantityController.text,
+                                              RequestDate: DateController.text,
+                                              Type: "Plastic");
+
+                                          NameController.clear();
+                                          PhoneController.clear();
+                                          AddressController.clear();
+                                          QuantityController.clear();
+                                          DateController.clear();
+                                          // ScaffoldMessenger.of(context)
+                                          //     .showSnackBar(
+                                          //   SnackBar(
+                                          //     backgroundColor:
+                                          //         ColorConstant.MainGreen,
+                                          //     content: Text(
+                                          //         "Request Send Successfully!",
+                                          //         style: GoogleFonts.poppins(
+                                          //             color:
+                                          //                 ColorConstant.White,
+                                          //             fontWeight:
+                                          //                 FontWeight.bold,),),
+                                          //   ),
+                                          // );
+
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    SuccessScreen(),
+                                              ));
+                                        } else {
+                                          Navigator.pop(context);
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              backgroundColor: Colors.red,
+                                              content: Text(
+                                                "please fill all the details",
+                                                style: TextStyle(
+                                                  color: ColorConstant.White,
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        }
                                       },
                                       child: Text("save"),
                                     ),
-                                    SizedBox(
-                                      height: 20,
-                                    ),
+                                    // SizedBox(
+                                    //   height: 20,
+                                    // ),
                                     Image.asset(ImageConstant.Collecting)
                                   ],
                                 ),
@@ -213,7 +269,7 @@ class HomeScreen extends StatelessWidget {
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    TextField(
+                                    TextFormField(
                                       controller: ENameController,
                                       decoration: InputDecoration(
                                           hintText: "Your Name",
@@ -225,7 +281,7 @@ class HomeScreen extends StatelessWidget {
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    TextField(
+                                    TextFormField(
                                       controller: EPhoneController,
                                       decoration: InputDecoration(
                                           hintText: "Phone no",
@@ -237,7 +293,7 @@ class HomeScreen extends StatelessWidget {
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    TextField(
+                                    TextFormField(
                                       controller: EAddressController,
                                       decoration: InputDecoration(
                                           hintText: "Your Address",
@@ -249,7 +305,7 @@ class HomeScreen extends StatelessWidget {
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    TextField(
+                                    TextFormField(
                                       controller: EQuantityController,
                                       decoration: InputDecoration(
                                           hintText: "Quantity of Waste",
@@ -261,7 +317,7 @@ class HomeScreen extends StatelessWidget {
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    TextField(
+                                    TextFormField(
                                       controller: EDateController,
                                       decoration: InputDecoration(
                                           hintText: "Date of Request",
@@ -274,27 +330,67 @@ class HomeScreen extends StatelessWidget {
                                       height: 10,
                                     ),
                                     ElevatedButton(
-                                        onPressed: () async {
-                                          MyControllerobj.addEData(
-                                            EUserName: ENameController.text,
-                                            EUserPhone: EPhoneController.text,
-                                            EUserAddress:
-                                                EAddressController.text,
-                                            EWasteQuantity:
-                                                EQuantityController.text,
-                                            ERequestDate: EDateController.text,
-                                          );
-                                          ENameController.clear();
-                                          EPhoneController.clear();
-                                          EAddressController.clear();
-                                          EQuantityController.clear();
-                                          EDateController.clear();
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                builder: (context) =>
-                                                    RequestsScreen(),
-                                              ));
+                                        onPressed: () {
+                                          if (ENameController.text.isNotEmpty &&
+                                              EPhoneController
+                                                  .text.isNotEmpty &&
+                                              EAddressController
+                                                  .text.isNotEmpty &&
+                                              EQuantityController
+                                                  .text.isNotEmpty &&
+                                              EDateController.text.isNotEmpty) {
+                                            MyControllerobj.addEData(
+                                                EUserName: ENameController.text,
+                                                EUserPhone:
+                                                    EPhoneController.text,
+                                                EUserAddress:
+                                                    EAddressController.text,
+                                                EWasteQuantity:
+                                                    EQuantityController.text,
+                                                ERequestDate:
+                                                    EDateController.text,
+                                                Type: "E-Waste");
+                                            // ScaffoldMessenger.of(context)
+                                            //     .showSnackBar(SnackBar(
+                                            //         backgroundColor:
+                                            //             ColorConstant.MainGreen,
+                                            //         content: Text(
+                                            //           "Request Send Successfully!",
+                                            //           style:
+                                            //               GoogleFonts.poppins(
+                                            //             color:
+                                            //                 ColorConstant.White,
+                                            //             fontWeight:
+                                            //                 FontWeight.bold,
+                                            //           ),
+                                            //         )));
+                                            ENameController.clear();
+                                            EPhoneController.clear();
+                                            EAddressController.clear();
+                                            EQuantityController.clear();
+                                            EDateController.clear();
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      SuccessScreen(),
+                                                ));
+                                          } else {
+                                            Navigator.pop(context);
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                backgroundColor: Colors.red,
+                                                content: Text(
+                                                  "Fill All your Details...",
+                                                  style: TextStyle(
+                                                    color: ColorConstant.White,
+                                                    fontWeight: FontWeight.bold,
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          }
                                         },
                                         child: Text("save")),
                                     // SizedBox(

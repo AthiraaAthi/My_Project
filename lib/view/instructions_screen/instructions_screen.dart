@@ -110,11 +110,11 @@ class InstructionScreen extends StatelessWidget {
               ),
               Image.asset(ImageConstant.Settings),
               SizedBox(
-                height: 20,
+                height: 30,
               ),
               Text(
                 '''
- you'll find a User Guide, About, Rating,Share
+ you'll find a User Guide, About, Rating, Share
                 ''',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),

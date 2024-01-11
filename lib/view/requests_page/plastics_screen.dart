@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:my_project/utils/color_constant/color_constant.dart';
 
 import 'package:my_project/view/requests_page/request_screen_widget.dart';
 
@@ -28,8 +29,9 @@ class PlasticScreen extends StatelessWidget {
                         height: 300,
                         width: 300,
                         decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(),
+                            color: Color.fromARGB(255, 153, 245, 163),
+                            border: Border.all(
+                                color: ColorConstant.MainGreen, width: 5),
                             borderRadius: BorderRadius.circular(10)),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
@@ -48,7 +50,7 @@ class PlasticScreen extends StatelessWidget {
                               ),
                               Text(
                                 "Contact No : ${Users["Phone"]}",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     fontSize: 15, fontWeight: FontWeight.w400),
                               ),
                               SizedBox(
@@ -56,7 +58,7 @@ class PlasticScreen extends StatelessWidget {
                               ),
                               Text(
                                 "Address : ${Users["Address"]}",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     fontSize: 15, fontWeight: FontWeight.w400),
                               ),
                               SizedBox(
@@ -64,7 +66,7 @@ class PlasticScreen extends StatelessWidget {
                               ),
                               Text(
                                 "Quantity : ${Users["Quantity"]}",
-                                style: TextStyle(
+                                style: GoogleFonts.poppins(
                                     fontSize: 15, fontWeight: FontWeight.w400),
                               ),
                               SizedBox(
@@ -76,9 +78,9 @@ class PlasticScreen extends StatelessWidget {
                                 children: [
                                   Text(
                                     "Date of Request : ${Users["Date"]}",
-                                    style: TextStyle(
+                                    style: GoogleFonts.poppins(
                                         fontSize: 15,
-                                        fontWeight: FontWeight.w500),
+                                        fontWeight: FontWeight.w400),
                                   ),
                                 ],
                               ),
