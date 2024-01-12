@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -47,10 +48,17 @@ class _HomeScreenState extends State<HomeScreen> {
 
   TextEditingController EDateController = TextEditingController();
 
-  CollectionReference ProfileCollection =
-      FirebaseFirestore.instance.collection("ProfileName");
+  // CollectionReference ProfileCollection =
+  //     FirebaseFirestore.instance.collection("ProfileName");
 
-  TextEditingController ProfileNamecontroller = TextEditingController();
+  // TextEditingController ProfileNamecontroller = TextEditingController();
+  List<String> MyList = [
+    "assets/images/carousal 1.jpg",
+    "assets/images/carousal 2.jpg",
+    "assets/images/carousal 3.jpg",
+    "assets/images/carousal 4.jpg",
+    "assets/images/carousal 5.jpg",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -64,12 +72,30 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Image.asset(
-            ImageConstant.Cleaning,
-            fit: BoxFit.fill,
-          ),
           SizedBox(
-            height: 20,
+            height: 30,
+          ),
+          CarouselSlider.builder(
+              itemCount: MyList.length,
+              itemBuilder: (context, index, realIndex) => Container(
+                    height: 200,
+                    width: 300,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      image: DecorationImage(
+                          image: AssetImage(MyList[index]), fit: BoxFit.fill),
+                    ),
+                  ),
+              options: CarouselOptions(
+                  autoPlay: true,
+                  scrollDirection: Axis.horizontal,
+                  viewportFraction: 1)),
+          // Image.asset(
+          //   ImageConstant.Cleaning,
+          //   fit: BoxFit.fill,
+          // ),
+          SizedBox(
+            height: 40,
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
@@ -89,6 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     MediaQuery.of(context).viewInsets.bottom),
                             child: Container(
                               height: 600,
+                              width: 600,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
@@ -216,11 +243,16 @@ class _HomeScreenState extends State<HomeScreen> {
                                         }
                                       },
                                       child: Text("save"),
+                                      style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStatePropertyAll(
+                                        ColorConstant.MainGreen,
+                                      )),
                                     ),
-                                    // SizedBox(
-                                    //   height: 20,
-                                    // ),
-                                    Image.asset(ImageConstant.Collecting)
+                                    SizedBox(
+                                      height: 20,
+                                    ),
+                                    Image.asset(ImageConstant.Collecting),
                                   ],
                                 ),
                               ),
@@ -263,13 +295,14 @@ class _HomeScreenState extends State<HomeScreen> {
                                 bottom:
                                     MediaQuery.of(context).viewInsets.bottom),
                             child: Container(
-                              height: 600,
+                              height: 700,
+                              // width: 600,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    TextFormField(
+                                    TextField(
                                       controller: ENameController,
                                       decoration: InputDecoration(
                                           hintText: "Your Name",
@@ -281,7 +314,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    TextFormField(
+                                    TextField(
                                       controller: EPhoneController,
                                       decoration: InputDecoration(
                                           hintText: "Phone no",
@@ -293,7 +326,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    TextFormField(
+                                    TextField(
                                       controller: EAddressController,
                                       decoration: InputDecoration(
                                           hintText: "Your Address",
@@ -305,7 +338,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    TextFormField(
+                                    TextField(
                                       controller: EQuantityController,
                                       decoration: InputDecoration(
                                           hintText: "Quantity of Waste",
@@ -317,7 +350,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    TextFormField(
+                                    TextField(
                                       controller: EDateController,
                                       decoration: InputDecoration(
                                           hintText: "Date of Request",
@@ -330,72 +363,77 @@ class _HomeScreenState extends State<HomeScreen> {
                                       height: 10,
                                     ),
                                     ElevatedButton(
-                                        onPressed: () {
-                                          if (ENameController.text.isNotEmpty &&
-                                              EPhoneController
-                                                  .text.isNotEmpty &&
-                                              EAddressController
-                                                  .text.isNotEmpty &&
-                                              EQuantityController
-                                                  .text.isNotEmpty &&
-                                              EDateController.text.isNotEmpty) {
-                                            MyControllerobj.addEData(
-                                                EUserName: ENameController.text,
-                                                EUserPhone:
-                                                    EPhoneController.text,
-                                                EUserAddress:
-                                                    EAddressController.text,
-                                                EWasteQuantity:
-                                                    EQuantityController.text,
-                                                ERequestDate:
-                                                    EDateController.text,
-                                                Type: "E-Waste");
-                                            // ScaffoldMessenger.of(context)
-                                            //     .showSnackBar(SnackBar(
-                                            //         backgroundColor:
-                                            //             ColorConstant.MainGreen,
-                                            //         content: Text(
-                                            //           "Request Send Successfully!",
-                                            //           style:
-                                            //               GoogleFonts.poppins(
-                                            //             color:
-                                            //                 ColorConstant.White,
-                                            //             fontWeight:
-                                            //                 FontWeight.bold,
-                                            //           ),
-                                            //         )));
-                                            ENameController.clear();
-                                            EPhoneController.clear();
-                                            EAddressController.clear();
-                                            EQuantityController.clear();
-                                            EDateController.clear();
-                                            Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      SuccessScreen(),
-                                                ));
-                                          } else {
-                                            Navigator.pop(context);
-                                            ScaffoldMessenger.of(context)
-                                                .showSnackBar(
-                                              SnackBar(
-                                                backgroundColor: Colors.red,
-                                                content: Text(
-                                                  "Fill All your Details...",
-                                                  style: TextStyle(
-                                                    color: ColorConstant.White,
-                                                    fontWeight: FontWeight.bold,
-                                                  ),
+                                      onPressed: () {
+                                        if (ENameController.text.isNotEmpty &&
+                                            EPhoneController.text.isNotEmpty &&
+                                            EAddressController
+                                                .text.isNotEmpty &&
+                                            EQuantityController
+                                                .text.isNotEmpty &&
+                                            EDateController.text.isNotEmpty) {
+                                          MyControllerobj.addEData(
+                                              EUserName: ENameController.text,
+                                              EUserPhone: EPhoneController.text,
+                                              EUserAddress:
+                                                  EAddressController.text,
+                                              EWasteQuantity:
+                                                  EQuantityController.text,
+                                              ERequestDate:
+                                                  EDateController.text,
+                                              Type: "E-Waste");
+                                          // ScaffoldMessenger.of(context)
+                                          //     .showSnackBar(SnackBar(
+                                          //         backgroundColor:
+                                          //             ColorConstant.MainGreen,
+                                          //         content: Text(
+                                          //           "Request Send Successfully!",
+                                          //           style:
+                                          //               GoogleFonts.poppins(
+                                          //             color:
+                                          //                 ColorConstant.White,
+                                          //             fontWeight:
+                                          //                 FontWeight.bold,
+                                          //           ),
+                                          //         )));
+                                          ENameController.clear();
+                                          EPhoneController.clear();
+                                          EAddressController.clear();
+                                          EQuantityController.clear();
+                                          EDateController.clear();
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    SuccessScreen(),
+                                              ));
+                                        } else {
+                                          Navigator.pop(context);
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              backgroundColor: Colors.red,
+                                              content: Text(
+                                                "Fill All your Details...",
+                                                style: TextStyle(
+                                                  color: ColorConstant.White,
+                                                  fontWeight: FontWeight.bold,
                                                 ),
                                               ),
-                                            );
-                                          }
-                                        },
-                                        child: Text("save")),
-                                    // SizedBox(
-                                    //   height: 20,
-                                    // ),
+                                            ),
+                                          );
+                                        }
+                                      },
+                                      child: Text("save"),
+                                      style: ButtonStyle(
+                                        backgroundColor:
+                                            MaterialStatePropertyAll(
+                                          ColorConstant.MainGreen,
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      height: 20,
+                                    ),
                                     Image.asset(
                                       ImageConstant.Collecting,
                                       fit: BoxFit.fill,
@@ -430,10 +468,10 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          SizedBox(
-            height: 10,
-          ),
-          Image.asset(ImageConstant.Nature)
+          // SizedBox(
+          //   height: 10,
+          // ),
+          //Image.asset(ImageConstant.Nature)
         ],
       ),
     );

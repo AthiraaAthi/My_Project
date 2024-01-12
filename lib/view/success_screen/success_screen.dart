@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
 import 'package:my_project/view/requests_page/requests.dart';
@@ -30,8 +31,21 @@ class _SuccessScreenState extends State<SuccessScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child:
-            LottieBuilder.asset("assets/images/Animation - 1704783212659.json"),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            LottieBuilder.asset("assets/images/Animation - 1704956159390.json"),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              "Successfully Send",
+              style: GoogleFonts.poppins(
+                  fontSize: 18, fontWeight: FontWeight.bold),
+            )
+          ],
+        ),
       ),
     );
   }
