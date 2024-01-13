@@ -29,7 +29,7 @@ class EwasteScreen extends StatelessWidget {
                         height: 300,
                         width: 300,
                         decoration: BoxDecoration(
-                            color: Colors.white,
+                            color: Color.fromARGB(255, 153, 245, 163),
                             border: Border.all(color: ColorConstant.MainGreen),
                             borderRadius: BorderRadius.circular(10)),
                         child: Padding(

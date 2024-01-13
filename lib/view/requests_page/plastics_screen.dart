@@ -30,8 +30,7 @@ class PlasticScreen extends StatelessWidget {
                         width: 300,
                         decoration: BoxDecoration(
                             color: Color.fromARGB(255, 153, 245, 163),
-                            border: Border.all(
-                                color: ColorConstant.MainGreen, width: 5),
+                            border: Border.all(color: ColorConstant.MainGreen),
                             borderRadius: BorderRadius.circular(10)),
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),

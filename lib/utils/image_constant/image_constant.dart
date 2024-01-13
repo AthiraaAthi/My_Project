@@ -11,7 +11,7 @@ class ImageConstant {
   static String Donts = "assets/images/wastes.jpg";
   static String Home = "assets/images/HomeScreen.png";
   static String ontap = "assets/images/ontapScreen.png";
-  static String requests = "assets/images/requestsScreen.png";
+  static String requests = "assets/images/RequestsScreen.png";
   static String Guide = "assets/images/GuideScreen.png";
   static String Settings = "assets/images/SettingsScreen.png";
 }

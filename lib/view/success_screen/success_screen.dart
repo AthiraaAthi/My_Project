@@ -36,13 +36,13 @@ class _SuccessScreenState extends State<SuccessScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             LottieBuilder.asset("assets/images/Animation - 1704956159390.json"),
-            SizedBox(
-              height: 10,
-            ),
+            // SizedBox(
+            //   height: 10,
+            // ),
             Text(
               "Successfully Send",
               style: GoogleFonts.poppins(
-                  fontSize: 18, fontWeight: FontWeight.bold),
+                  fontSize: 25, fontWeight: FontWeight.bold),
             )
           ],
         ),

@@ -59,6 +59,13 @@ class _HomeScreenState extends State<HomeScreen> {
     "assets/images/carousal 4.jpg",
     "assets/images/carousal 5.jpg",
   ];
+  // List<String> MyText = [
+  //   "Welcome to Wastico!!",
+  //   "Burden of waste can be a burden for us too..",
+  //   "Introducing my App as a Solution for a Clean Society....",
+  //   "You Can Use this App for submitting waste in your home,society,etc...",
+  //   "Simple app with easy usage for public",
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -73,23 +80,24 @@ class _HomeScreenState extends State<HomeScreen> {
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           SizedBox(
-            height: 30,
+            height: 3,
           ),
           CarouselSlider.builder(
-              itemCount: MyList.length,
-              itemBuilder: (context, index, realIndex) => Container(
-                    height: 200,
-                    width: 300,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.rectangle,
-                      image: DecorationImage(
-                          image: AssetImage(MyList[index]), fit: BoxFit.fill),
-                    ),
-                  ),
-              options: CarouselOptions(
-                  autoPlay: true,
-                  scrollDirection: Axis.horizontal,
-                  viewportFraction: 1)),
+            itemCount: MyList.length,
+            itemBuilder: (context, index, realIndex) => Container(
+              height: 300,
+              width: 500,
+              decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                image: DecorationImage(
+                    image: AssetImage(MyList[index]), fit: BoxFit.fill),
+              ),
+            ),
+            options: CarouselOptions(
+                autoPlay: true,
+                scrollDirection: Axis.horizontal,
+                viewportFraction: 1),
+          ),
           // Image.asset(
           //   ImageConstant.Cleaning,
           //   fit: BoxFit.fill,
@@ -114,8 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 bottom:
                                     MediaQuery.of(context).viewInsets.bottom),
                             child: Container(
-                              height: 600,
-                              width: 600,
+                              height: 420,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Column(
@@ -249,10 +256,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ColorConstant.MainGreen,
                                       )),
                                     ),
-                                    SizedBox(
-                                      height: 20,
-                                    ),
-                                    Image.asset(ImageConstant.Collecting),
+                                    // SizedBox(
+                                    //   height: 20,
+                                    // ),
+                                    // Image.asset(ImageConstant.Collecting),
                                   ],
                                 ),
                               ),
@@ -295,7 +302,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 bottom:
                                     MediaQuery.of(context).viewInsets.bottom),
                             child: Container(
-                              height: 700,
+                              height: 420,
                               // width: 600,
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
@@ -431,13 +438,13 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 20,
-                                    ),
-                                    Image.asset(
-                                      ImageConstant.Collecting,
-                                      fit: BoxFit.fill,
-                                    )
+                                    // SizedBox(
+                                    //   height: 5,
+                                    // ),
+                                    // Image.asset(
+                                    //   ImageConstant.Collecting,
+                                    //   fit: BoxFit.fill,
+                                    // )
                                   ],
                                 ),
                               ),
@@ -468,10 +475,47 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
           ),
-          // SizedBox(
-          //   height: 10,
-          // ),
+          SizedBox(
+            height: 40,
+          ),
           //Image.asset(ImageConstant.Nature)
+          Container(
+            height: 100,
+            width: 400,
+            decoration: BoxDecoration(
+              color: ColorConstant.White,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Center(
+              child: Text(
+                "Welcome to Wastico!!",
+                style: GoogleFonts.poppins(
+                    fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+            ),
+            // child: CarouselSlider.builder(
+            //   itemCount: MyText.length,
+            //   itemBuilder: (context, index, realIndex) => Container(
+            //     height: 200,
+            //     width: 500,
+            //     child: Center(
+            //       child: Text(
+            //         MyText[index],
+            //         style: GoogleFonts.poppins(
+            //           fontSize: 18,
+            //           fontWeight: FontWeight.bold,
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            //   options: CarouselOptions(
+            //       autoPlay: true,
+            //       scrollDirection: Axis.horizontal,
+            //       viewportFraction: 1,
+            //       enlargeCenterPage: true,
+            //       autoPlayInterval: Duration(seconds: 4)),
+            // ),
+          )
         ],
       ),
     );
