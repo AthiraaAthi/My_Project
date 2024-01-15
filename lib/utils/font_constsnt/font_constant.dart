@@ -13,6 +13,6 @@ class FontConstant {
       GoogleFonts.actor(fontSize: 20, fontWeight: FontWeight.bold);
   static TextStyle myMainFonts =
       GoogleFonts.robotoSlab(fontWeight: FontWeight.bold, color: Colors.black);
-  static TextStyle Poppins = GoogleFonts.poppins(
-      fontWeight: FontWeight.bold, color: Colors.black, fontSize: 35);
+  static TextStyle Poppins =
+      GoogleFonts.poppins(color: Colors.black, fontSize: 18);
 }

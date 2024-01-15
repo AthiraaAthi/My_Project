@@ -25,7 +25,7 @@ class AboutScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                    '''We're dedicated to revolutionizing the way you handle waste. 
+                  '''We're dedicated to revolutionizing the way you handle waste. 
 Our app is your all-in-one solution for efficient waste disposal, 
 recycling tips, and environmental education. Simplifying waste management through user-friendly interfaces, 
 innovative tracking systems, and personalized suggestions, 
@@ -42,7 +42,9 @@ Join our community of environmentally conscious individuals and take actionable 
 Together, let's transform the way we handle waste, leaving a positive impact on the environment for generations to come.
 Download the app today and be a part of the movement towards a greener tomorrow.
       ''',
-                    style: FontConstant.Poppins),
+                  style: FontConstant.Poppins,
+                  textAlign: TextAlign.justify,
+                ),
               )
             ],
           ),
