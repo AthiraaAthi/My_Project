@@ -4,6 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:my_project/utils/color_constant/color_constant.dart';
 import 'package:my_project/view/instructions_screen/instructions_screen.dart';
 import 'package:my_project/view/response_screen/response_screen.dart';
+import 'package:my_project/view/terms&conditions_screen/terms&conditions.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -89,23 +90,7 @@ class SettingsScreen extends StatelessWidget {
             SizedBox(
               height: 20,
             ),
-            HomeScreenWidget(
-                ontap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => AboutScreen(),
-                      ));
-                },
-                correstitle: "About",
-                corresicon: Icon(
-                  Icons.info_outline,
-                  size: 35,
-                )),
 
-            SizedBox(
-              height: 20,
-            ),
             HomeScreenWidget(
               ontap: () {
                 showDialog(
@@ -223,15 +208,43 @@ class SettingsScreen extends StatelessWidget {
               height: 20,
             ),
             HomeScreenWidget(
+                ontap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AboutScreen(),
+                      ));
+                },
+                correstitle: "About",
+                corresicon: Icon(
+                  Icons.info_outline,
+                  size: 35,
+                )),
+
+            SizedBox(
+              height: 20,
+            ),
+            HomeScreenWidget(
               ontap: () {
                 Share.share("");
               },
               correstitle: "Share",
               corresicon: Icon(Icons.share, size: 35),
             ),
-            // // SizedBox(
-            // //   height: 10,
-            // // ),
+            SizedBox(
+              height: 10,
+            ),
+            HomeScreenWidget(
+              ontap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => TermsAndConditionsScreen(),
+                    ));
+              },
+              correstitle: "Terms & Conditions",
+              corresicon: Icon(Icons.explore, size: 32),
+            ),
             // Image.asset(
             //   ImageConstant.Collecting,
             //   fit: BoxFit.fill,
