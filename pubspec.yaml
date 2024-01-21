@@ -45,6 +45,7 @@ dependencies:
   shared_preferences: ^2.2.2
   form_field_validator: ^1.1.0
   carousel_slider: ^4.2.1
+  change_app_package_name: ^1.1.0
   
   
 
