@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
 
 import 'package:my_project/controller/my_controller/my_controller.dart';
@@ -180,6 +181,61 @@ class _HomeScreenState extends State<HomeScreen> {
                                       controller: DateController,
                                       decoration: InputDecoration(
                                           hintText: "Date of Request",
+                                          suffixIcon: IconButton(
+                                            onPressed: () async {
+                                              DateTime? pickedDate =
+                                                  await showDatePicker(
+                                                      builder:
+                                                          (context, child) {
+                                                        return Theme(
+                                                            data: Theme.of(
+                                                                    context)
+                                                                .copyWith(
+                                                              colorScheme: ColorScheme.light(
+                                                                  primary:
+                                                                      ColorConstant
+                                                                          .MainGreen,
+                                                                  onPrimary:
+                                                                      ColorConstant
+                                                                          .White,
+                                                                  onSurface:
+                                                                      Colors
+                                                                          .black),
+                                                              textButtonTheme:
+                                                                  TextButtonThemeData(
+                                                                style: TextButton.styleFrom(
+                                                                    foregroundColor:
+                                                                        ColorConstant
+                                                                            .MainGreen),
+                                                              ),
+                                                            ),
+                                                            child: child!);
+                                                      },
+                                                      context: context,
+                                                      initialDate:
+                                                          DateTime.now(),
+                                                      firstDate: DateTime(2000),
+                                                      lastDate: DateTime(2101));
+                                              if (pickedDate != null) {
+                                                print(
+                                                    "picked Date:$pickedDate");
+                                                String formattedDate =
+                                                    DateFormat("dd-MM-yyyy")
+                                                        .format(pickedDate);
+                                                print(
+                                                    "formatted Date:$formattedDate");
+                                                setState(() {
+                                                  DateController.text =
+                                                      formattedDate;
+                                                });
+                                              } else {
+                                                SnackBar(
+                                                  content: Text("Select Date"),
+                                                );
+                                              }
+                                            },
+                                            icon: Icon(Icons.calendar_month),
+                                          ),
                                           border: OutlineInputBorder(
                                               borderSide: BorderSide(),
                                               borderRadius:
@@ -360,6 +416,61 @@ class _HomeScreenState extends State<HomeScreen> {
                                     TextField(
                                       controller: EDateController,
                                       decoration: InputDecoration(
+                                          suffixIcon: IconButton(
+                                            onPressed: () async {
+                                              DateTime? pickedDate =
+                                                  await showDatePicker(
+                                                      builder:
+                                                          (context, child) {
+                                                        return Theme(
+                                                            data: Theme.of(
+                                                                    context)
+                                                                .copyWith(
+                                                              colorScheme: ColorScheme.light(
+                                                                  primary:
+                                                                      ColorConstant
+                                                                          .MainGreen,
+                                                                  onPrimary:
+                                                                      ColorConstant
+                                                                          .White,
+                                                                  onSurface:
+                                                                      Colors
+                                                                          .black),
+                                                              textButtonTheme:
+                                                                  TextButtonThemeData(
+                                                                style: TextButton.styleFrom(
+                                                                    foregroundColor:
+                                                                        ColorConstant
+                                                                            .MainGreen),
+                                                              ),
+                                                            ),
+                                                            child: child!);
+                                                      },
+                                                      context: context,
+                                                      initialDate:
+                                                          DateTime.now(),
+                                                      firstDate: DateTime(2000),
+                                                      lastDate: DateTime(2101));
+                                              if (pickedDate != null) {
+                                                print(
+                                                    "picked Date:$pickedDate");
+                                                String formattedDate =
+                                                    DateFormat("dd-MM-yyyy")
+                                                        .format(pickedDate);
+                                                print(
+                                                    "formatted Date:$formattedDate");
+                                                setState(() {
+                                                  EDateController.text =
+                                                      formattedDate;
+                                                });
+                                              } else {
+                                                SnackBar(
+                                                  content: Text("Select Date"),
+                                                );
+                                              }
+                                            },
+                                            icon: Icon(Icons.calendar_month),
+                                          ),
                                           hintText: "Date of Request",
                                           border: OutlineInputBorder(
                                               borderSide: BorderSide(),

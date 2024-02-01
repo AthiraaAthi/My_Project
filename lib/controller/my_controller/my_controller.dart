@@ -21,8 +21,8 @@ class MyController {
     });
   }
 
-  CollectionReference EUserCollection =
-      FirebaseFirestore.instance.collection("Euser");
+  // CollectionReference EUserCollection =
+  //     FirebaseFirestore.instance.collection("Euser");
   Future addEData({
     required String EUserName,
     required String EUserPhone,
@@ -31,7 +31,7 @@ class MyController {
     required String ERequestDate,
     required String Type,
   }) async {
-    EUserCollection.add({
+    UserCollection.add({
       "Name": EUserName,
       "Phone": EUserPhone,
       "Address": EUserAddress,

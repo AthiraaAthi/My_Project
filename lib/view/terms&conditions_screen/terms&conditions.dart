@@ -58,7 +58,7 @@ We reserve the right to terminate or suspend your access to the app immediately,
 
 9. Limitation of Liability
 
-In no event shall [Your Company] be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly.
+In no event shall our Company be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly.
 
 10. Governing Law
 
